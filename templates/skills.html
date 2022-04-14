@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Skills</title>
+</head>
+<body>
+{% for value in skill%}
+    <br><img src={{ value.picture }}>
+    <pre>{{ value.name }}</pre>
+    <pre>{{ value.position }}</pre>
+    <pre>{{ value.skills }}</pre>
+{% endfor %}
+</body>
+</html>
