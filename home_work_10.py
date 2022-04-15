@@ -26,7 +26,7 @@ def add_skills_dict(sk):
     skill_dict = []
     sk = sk.lower()
     for key, value in new_dict.items():
-        b = value["skills"]
+        b = value["skills"].lower()
         s = b.split(", ")
         if sk in s:
             skill_dict.append(value)
