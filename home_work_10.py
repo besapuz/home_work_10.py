@@ -8,24 +8,22 @@ with open('candidates.json', 'r', encoding='utf8') as file:
     user_dict = json.load(file)
 
 
-def iteration_list():
+def iteration_list(index):
     """Делает вложенный словарь с ключем id"""
-    id_dict = {}
-    for o in user_dict:
-        id = o.get('id')
-        del o["id"]
-        id_dict[id] = o
-    return id_dict
-
-
-new_dict = iteration_list()
+    for r in user_dict:
+        if index == r["id"]:
+            skills = r["skills"]
+            name = r["name"]
+            position = r["position"]
+            picture = r["picture"]
+            return picture, name, position, skills
 
 
 def add_skills_dict(sk):
     """Выполняет поиск навыков в skills"""
     skill_dict = []
     sk = sk.lower()
-    for key, value in new_dict.items():
+    for value in user_dict:
         b = value["skills"].lower()
         s = b.split(", ")
         if sk in s:
@@ -40,11 +38,8 @@ def return_index():
 
 @app.route("/candidate/<int:index>")
 def outputs_user(index):
-    skills = new_dict[index]["skills"]
-    name = new_dict[index]["name"]
-    position = new_dict[index]["position"]
-    picture = new_dict[index]["picture"]
-    return f"<img src={picture}><pre><b>{name}</b>\n{position}\n{skills}"
+    set_ = iteration_list(index)
+    return f"{render_template('user_id.html', set=set_)}"
 
 
 @app.route("/skills/<string:skill>")
