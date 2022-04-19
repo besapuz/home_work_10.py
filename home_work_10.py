@@ -11,12 +11,8 @@ with open('candidates.json', 'r', encoding='utf8') as file:
 def iteration_list(index):
     """Делает вложенный словарь с ключем id"""
     for r in user_dict:
-        if index == r["id"]:
-            skills = r["skills"]
-            name = r["name"]
-            position = r["position"]
-            picture = r["picture"]
-            return picture, name, position, skills
+        if index is r["id"]:
+            return r["picture"], r["name"], r["position"], r["skills"]
 
 
 def add_skills_dict(sk):
