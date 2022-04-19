@@ -29,7 +29,7 @@ def add_skills_dict(sk):
 
 @app.route("/")
 def return_index():
-    return f"<h1>Гавная страница</h1> {render_template('index.html', user=user_dict)}"
+    return f"<h1>Главная страница</h1> {render_template('index.html', user=user_dict)}"
 
 
 @app.route("/candidate/<int:index>")
